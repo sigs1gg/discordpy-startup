@@ -19,14 +19,14 @@ async def on_command_error(ctx, error):
         nowtime = datetime.datetime.utcnow() 
         nowtime = nowtime + datetime.timedelta(hours=9) 
         nowtime = nowtime.strftime("%m/%d-%H:%M") 
-        vcchannel = client.get_channel('653523307865309187') 
+        vcchannel = bot.get_channel('653523307865309187') 
  
         if(before.voice_channel is None): 
             jointext=nowtime + "に　"+ after.name + "　が　"+ after.voice_channel.name + " に参加しました。" 
-            await client.send_message(vcchannel, jointext) 
+            await bot.send_message(vcchannel, jointext) 
         elif(after.voice_channel is None): 
             outtext=nowtime + "に　"+ before.name + "　が　"+ before.voice_channel.name + " から退出しました。" 
-            await client.send_message(vcchannel, outtext) 
+            await bot.send_message(vcchannel, outtext) 
 
 
 @bot.command()
