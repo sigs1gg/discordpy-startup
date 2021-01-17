@@ -18,7 +18,7 @@ async def ping(ctx):
     await ctx.send('pong')
     
 @bot.command()
-async def uwu(ctx):
-    await ctx.send('awa')
+async def neko(ctx):
+    await ctx.send('nyan')
 
 bot.run(token)
