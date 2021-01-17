@@ -13,20 +13,21 @@ async def on_command_error(ctx, error):
     error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
     await ctx.send(error_msg)
     
-@bot.event
+client = discord.Client() 
+@client.event
     async def on_voice_state_update(before, after): 
     if after.server.id == '653523307232231425': 
         nowtime = datetime.datetime.utcnow() 
         nowtime = nowtime + datetime.timedelta(hours=9) 
         nowtime = nowtime.strftime("%m/%d-%H:%M") 
-        vcchannel = bot.get_channel('653523307865309187') 
+        vcchannel = client.get_channel('653523307865309187') 
  
         if(before.voice_channel is None): 
             jointext=nowtime + "に　"+ after.name + "　が　"+ after.voice_channel.name + " に参加しました。" 
-            await bot.send_message(vcchannel, jointext) 
+            await client.send_message(vcchannel, jointext) 
         elif(after.voice_channel is None): 
             outtext=nowtime + "に　"+ before.name + "　が　"+ before.voice_channel.name + " から退出しました。" 
-            await bot.send_message(vcchannel, outtext) 
+            await client.send_message(vcchannel, outtext) 
 
 
 @bot.command()
