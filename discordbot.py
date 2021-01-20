@@ -21,4 +21,9 @@ async def ping(ctx):
 async def neko(ctx):
     await ctx.send('nyan')
 
+@bot.event()
+async def join_voice(self, ctx):
+    channel = ctx.author.voice.channel
+    await self.client.VoiceChannel.connect()
+    
 bot.run(token)
